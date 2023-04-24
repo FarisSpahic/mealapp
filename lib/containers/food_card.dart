@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mealapp/data/discounts.dart';
@@ -85,7 +86,7 @@ class _FoodCardState extends State<FoodCard> {
           content: SingleChildScrollView(
             child: ListBody(
               children:  <Widget>[
-                Image.network(widget.meal.imageUrl),
+                CachedNetworkImage(imageUrl: widget.meal.imageUrl),
                 const Text("Categories: ", style: TextStyle(fontSize: 22, fontFamily: "Poppins"),),
                 Text(listConversion(widget.meal.categories)),
                 const Text("Affordability:",style: TextStyle(fontSize: 22, fontFamily: "Poppins"),),

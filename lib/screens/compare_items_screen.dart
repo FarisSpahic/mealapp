@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:mealapp/containers/food_card.dart';
 import 'package:mealapp/data/dummy_data.dart';
@@ -49,7 +50,7 @@ class FoodView extends StatelessWidget {
           child: ListBody(
             mainAxis: Axis.vertical,
               children: <Widget>[
-                Image.network(meal.imageUrl, width: size.width/3.8, height: size.height/4.8, fit: BoxFit.fill,),
+                CachedNetworkImage(imageUrl: meal.imageUrl, width: size.width/3.8, height: size.height/4.8, fit: BoxFit.fill,),
                 const SizedBox(height: 10,),
                 Text("Name: ${meal.title}", style: propStyle,),
                 const SizedBox(height: 10,),

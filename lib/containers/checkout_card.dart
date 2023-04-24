@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:mealapp/data/discounts.dart';
 import 'package:mealapp/models/meal.dart';
@@ -59,7 +60,7 @@ class _CheckoutCardState extends State<CheckoutCard> {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
                 ),
-                  child: Image.network(widget.meal.imageUrl,fit: BoxFit.contain, width: size.width/3.8,)
+                  child: CachedNetworkImage(imageUrl: widget.meal.imageUrl,fit: BoxFit.contain, width: size.width/3.8,)
               ),
               const SizedBox(width: 15,),
              priceText

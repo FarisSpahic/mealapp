@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:mealapp/router/navbar.dart';
 import 'package:mealapp/screens/cart_screen.dart';
 import 'package:mealapp/screens/compare_items_screen.dart';
-import 'package:mealapp/screens/gallery.dart';
+import 'package:mealapp/screens/gallery_screen.dart';
 import 'package:mealapp/screens/home_screen.dart';
 import 'package:mealapp/screens/settings.dart';
 

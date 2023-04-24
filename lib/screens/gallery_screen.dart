@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:mealapp/data/dummy_data.dart';
 import 'package:mealapp/models/meal.dart';
@@ -74,7 +75,7 @@ class ColumnGalleryWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    final List<Widget> items = images.map((e) => Image.network(e, width: size.width, height: size.height/2, fit: BoxFit.contain,)).toList();
+    final List<Widget> items = images.map((e) => CachedNetworkImage(imageUrl:  e, width: size.width, height: size.height/2, fit: BoxFit.contain,)).toList();
     return Flexible(
       child: SingleChildScrollView(
         child: Column(
