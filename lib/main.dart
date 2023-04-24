@@ -17,22 +17,28 @@ class _MealAppState extends State<MealApp> {
   @override
   void initState() {
     pallete.addListener(() {
+      darkNotifier.value = !darkNotifier.value;
       setState(() {
 
       });}
     );
     super.initState();
   }
+  final darkNotifier = ValueNotifier(false);
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      routerConfig: router,
-      title: 'Mealz',
-      debugShowCheckedModeBanner: false,
-      themeMode: pallete.currentTheme(),
-      theme: ThemeData.light(),
-      darkTheme: ThemeData.dark(),
-
-    );
+    return ValueListenableBuilder<bool>(
+        valueListenable: darkNotifier,
+        builder: (BuildContext context, bool isDark, Widget? child){
+        return MaterialApp.router(
+          routerConfig: router,
+          title: 'Mealz',
+          debugShowCheckedModeBanner: false,
+          themeMode: pallete.currentTheme(),
+          theme: ThemeData.light(),
+          darkTheme: ThemeData.dark(),
+        );
+      }
+      );
   }
 }
