@@ -2,11 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter/material.dart';
 import 'package:mealapp/router/navbar.dart';
+import 'package:mealapp/screens/calendar_screen.dart';
 import 'package:mealapp/screens/cart_screen.dart';
 import 'package:mealapp/screens/compare_items_screen.dart';
 import 'package:mealapp/screens/gallery_screen.dart';
 import 'package:mealapp/screens/home_screen.dart';
-import 'package:mealapp/screens/settings.dart';
+import 'package:mealapp/screens/settings_screen.dart';
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
 final _shellNavigatorKey = GlobalKey<NavigatorState>();
@@ -50,7 +51,7 @@ final _shellNavigatorKey = GlobalKey<NavigatorState>();
                   pageBuilder: (BuildContext context, GoRouterState state) {
                   return NoTransitionPage(
                       key: UniqueKey(),
-                      child:  GalleryScreen()
+                      child:  const GalleryScreen()
                   );
                 },
               ),
@@ -62,7 +63,7 @@ final _shellNavigatorKey = GlobalKey<NavigatorState>();
       pageBuilder: (BuildContext context, GoRouterState state) {
           return NoTransitionPage(
                   key: UniqueKey(),
-                  child: CartScreen()
+                  child: const CartScreen()
             );
           }
       ),
@@ -70,8 +71,15 @@ final _shellNavigatorKey = GlobalKey<NavigatorState>();
           path: '/comparison',
         parentNavigatorKey: _shellNavigatorKey,
           pageBuilder: (BuildContext context, GoRouterState state){
-            return NoTransitionPage(child: CompareScreen(), key: UniqueKey());
+            return NoTransitionPage(child: const CompareScreen(), key: UniqueKey());
           }
+        ),
+        GoRoute(
+            path: '/calendar',
+            parentNavigatorKey: _shellNavigatorKey,
+            pageBuilder: (BuildContext context, GoRouterState state){
+              return NoTransitionPage(child: const CalendarScreen(), key: UniqueKey());
+            }
         )
       ]);
 

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
+import 'package:mealapp/containers/date_widget.dart';
 import 'package:mealapp/containers/food_gallery.dart';
 import 'package:mealapp/router/router.dart';
 import 'package:mealapp/themes/themes.dart';
@@ -35,7 +36,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
               ),
-              const FoodGallery()
+              const FoodGallery(),
+              const DateWidget()
             ],
           ),
       ),
@@ -43,8 +45,6 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
 }
-
-ThemePallete pallete = ThemePallete();
 
 AppBar _appBar(BuildContext context) {
   final mySystemTheme= SystemUiOverlayStyle.light.copyWith(systemNavigationBarColor: Colors.black87, statusBarColor: Colors.pinkAccent);
@@ -59,15 +59,6 @@ AppBar _appBar(BuildContext context) {
     ),
 
     actions: [
-      Padding(
-        padding: const EdgeInsets.only(right: 18.0),
-        child: GestureDetector(
-          child: const Icon(Icons.dark_mode_rounded),
-          onTap: () {
-            pallete.switchTheme();
-          },
-        ),
-      ),
       Padding(
         padding: const EdgeInsets.only(right: 18.0),
         child: GestureDetector(

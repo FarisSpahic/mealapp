@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mealapp/themes/themes.dart';
 
 class DarkModeSwitchWidget extends StatefulWidget {
   const DarkModeSwitchWidget({Key? key}) : super(key: key);
@@ -8,8 +9,10 @@ class DarkModeSwitchWidget extends StatefulWidget {
 }
 
 class _DarkModeSwitchWidgetState extends State<DarkModeSwitchWidget> {
-   bool isDark = false;
-  @override
+
+   final ThemePallete pallete = ThemePallete();
+
+   @override
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 15),
@@ -24,14 +27,14 @@ class _DarkModeSwitchWidgetState extends State<DarkModeSwitchWidget> {
             const Text("Dark mode", style: TextStyle(fontFamily: "Raleway", fontSize: 16),),
             const Spacer(),
             Switch(
-                value: isDark,
+                value: pallete.getIsDarkValue(),
                 activeColor: Colors.pink,
                 activeTrackColor: Colors.red,
                 inactiveThumbColor: Colors.black87,
                 inactiveTrackColor: Colors.black26,
                 onChanged: (d){
+                  pallete.switchTheme();
                   setState(() {
-                  isDark=!isDark;
                 });
                   debugPrint("value: $d"); })
           ],

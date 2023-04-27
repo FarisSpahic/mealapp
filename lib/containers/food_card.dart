@@ -45,7 +45,7 @@ class _FoodCardState extends State<FoodCard> {
                   children: [
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Image.network(e.imageUrl, width: size.width/3.5, height: size.height/8.2 ,fit: BoxFit.fill,),
+                      child: CachedNetworkImage(imageUrl: e.imageUrl, width: size.width/3.5, height: size.height/8.2 ,fit: BoxFit.fill,),
                     ),
                     const SizedBox(width: 15,),
                     Flexible(child: Text(e.title))

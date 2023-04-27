@@ -17,10 +17,8 @@ class _MealAppState extends State<MealApp> {
   @override
   void initState() {
     pallete.addListener(() {
-      darkNotifier.value = !darkNotifier.value;
-      setState(() {
-
-      });}
+      setState(() {});
+    }
     );
     super.initState();
   }
@@ -34,9 +32,9 @@ class _MealAppState extends State<MealApp> {
           routerConfig: router,
           title: 'Mealz',
           debugShowCheckedModeBanner: false,
-          themeMode: pallete.currentTheme(),
-          theme: ThemeData.light(),
-          darkTheme: ThemeData.dark(),
+         themeMode: pallete.currentTheme(),
+         theme: pallete.getIsDarkValue() ? ThemeData.dark() : ThemeData.light(),
+        // darkTheme: darkThemeConfig(),
         );
       }
       );
