@@ -17,8 +17,6 @@ class FoodCard extends StatefulWidget {
 
 class _FoodCardState extends State<FoodCard> {
 
-
-
   String listConversion(List<Object> items){
     String output = "";
     for(Object item in items){

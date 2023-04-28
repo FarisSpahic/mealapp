@@ -1,8 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:mealapp/router/router.dart';
 import 'package:mealapp/themes/themes.dart';
-void main() {
+void main() async {
+
+  await Hive.initFlutter();
+  await Hive.openBox("transactionsBox");
+  await Hive.openBox("productPurchaseBox");
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MealApp());
+
 }
 
 class MealApp extends StatefulWidget {
@@ -14,14 +22,8 @@ class MealApp extends StatefulWidget {
 
 class _MealAppState extends State<MealApp> {
   ThemePallete pallete = ThemePallete();
-  @override
-  void initState() {
-    pallete.addListener(() {
-      setState(() {});
-    }
-    );
-    super.initState();
-  }
+
+
   final darkNotifier = ValueNotifier(false);
   @override
   Widget build(BuildContext context) {
@@ -39,4 +41,5 @@ class _MealAppState extends State<MealApp> {
       }
       );
   }
+
 }

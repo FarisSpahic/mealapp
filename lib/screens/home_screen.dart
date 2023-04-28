@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
+import 'package:mealapp/containers/charts/best_sold_bar.dart';
 import 'package:mealapp/containers/date_widget.dart';
 import 'package:mealapp/containers/food_gallery.dart';
 import 'package:mealapp/router/router.dart';
@@ -22,23 +23,28 @@ class _HomeScreenState extends State<HomeScreen> {
     return  SafeArea(
       child: Scaffold(
           appBar: _appBar(context),
-          body: Column(
-            children: <Widget>[
-              Container(
-              margin: const EdgeInsets.all(12),
-                child: const Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text("Popular", style: TextStyle(
-                    fontSize: 32,
-                    fontFamily: 'Raleway',
-                    fontWeight: FontWeight.bold
-                  )
+          body: SingleChildScrollView(
+            scrollDirection: Axis.vertical,
+            child: Column(
+              children: <Widget>[
+                Container(
+                margin: const EdgeInsets.all(12),
+                  child: const Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text("Popular", style: TextStyle(
+                      fontSize: 32,
+                      fontFamily: 'Raleway',
+                      fontWeight: FontWeight.bold
+                    )
+                    ),
                   ),
                 ),
-              ),
-              const FoodGallery(),
-              const DateWidget()
-            ],
+                const FoodGallery(),
+                const DateWidget(),
+                const SizedBox(height: 10,),
+                const BestSoldProductBarChartView()
+              ],
+            ),
           ),
       ),
     );
