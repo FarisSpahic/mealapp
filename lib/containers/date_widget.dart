@@ -18,9 +18,8 @@ class DateWidget extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         child: Row(
           children: [
-            const Text("Date  ", style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, fontFamily: "Poppins"),),
-            const SizedBox(width: 5,),
-            Text(Calendar().getDate(), style: const TextStyle(fontFamily: "Raleway", fontSize: 18),),
+            //review
+            ...dateSubwidget(),
             const Spacer(),
             GestureDetector(
               onTap: (){
@@ -41,5 +40,13 @@ class DateWidget extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  List<Widget> dateSubwidget(){
+    return [
+      const Text("Date  ", style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, fontFamily: "Poppins"),),
+      const SizedBox(width: 5,),
+      Text(Calendar().getDate(), style: const TextStyle(fontFamily: "Raleway", fontSize: 18),),
+    ];
   }
 }

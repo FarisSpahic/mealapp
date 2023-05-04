@@ -3,10 +3,13 @@ import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:mealapp/router/router.dart';
 import 'package:mealapp/themes/themes.dart';
-void main() async {
 
+
+void main() async {
   await Hive.initFlutter();
-  await Hive.openBox("transactionsBox");
+  var productsBox = await Hive.openBox("productPurchaseBox");
+  await productsBox.close();
+  var transactionsBox = await Hive.openBox("transactionsBox");
   await Hive.openBox("productPurchaseBox");
   WidgetsFlutterBinding.ensureInitialized();
   runApp(const MealApp());

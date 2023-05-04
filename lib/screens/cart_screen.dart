@@ -31,9 +31,9 @@ class _CartScreenState extends State<CartScreen> {
 
   @override
   Widget build(BuildContext context) {
-    productsBox = Hive.box("productPurchaseBox");
     List<CheckoutCard> items = CartScreen.CART_ITEMS.map((e) => CheckoutCard(meal: e, refresh: _refresh,)).toList();
     double priceToPay = 0;
+
     CartScreen.CART_ITEMS.forEach((element) {
       if(DISCOUNTS.containsKey(element.id)){
         int? per = DISCOUNTS[element.id];
@@ -59,23 +59,23 @@ class _CartScreenState extends State<CartScreen> {
             child: Text("Purchase", style: TextStyle(color: Colors.pink, fontFamily: "Poppins", fontSize: 20, fontWeight: FontWeight.bold),),
           ),
         ),
-        onTap: () async {
+
+        onTap: () {
           //make transaction
-
-
           final transactionsBox = Hive.box("transactionsBox");
+          productsBox = Hive.box('productPurchaseBox');
           List transaction = CartScreen.CART_ITEMS.map((e) => e.title).toList();
           transactionsBox.add({priceToPay, transaction});
           for(Meal meal in CartScreen.CART_ITEMS){
-            var p = productsBox.get(meal.id);
-            debugPrint(p.toString());
-            if(p != null){
-              debugPrint("if statement... ${[...p]}");
-              productsBox.put(meal.id, [...p, meal.title]);
+            var product = productsBox.get(meal.id);
+            if(product != null){
+              var updatedProduct = {'name': product['name'], 'counter': product['counter']+1};
+              productsBox.put(meal.id, updatedProduct);
             }else{
-              debugPrint("else stmnt...");
-              productsBox.put(meal.id, meal.title);
+              var newProduct = {'name': meal.title, 'counter': 1};
+              productsBox.put(meal.id, newProduct);
             }
+
           }
           ScaffoldMessenger.of(context).showSnackBar(snackBar);
         },
